@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>社团后台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <section class="panel wide">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Admin Console</p>
+            <h1>社团知识后台</h1>
+          </div>
+          <button id="refreshButton" class="secondary">刷新数据</button>
+        </div>
+
+        <div class="grid two">
+          <form id="entityForm" class="panel inset">
+            <div class="form-head">
+              <div>
+                <h2 id="formTitle">录入结构化知识</h2>
+                <p id="formHint" class="muted-note">按类型填写字段，不需要手写 JSON。</p>
+              </div>
+              <button id="cancelEditButton" type="button" class="secondary hidden">取消编辑</button>
+            </div>
+            <input type="hidden" name="entity_id" />
+            <label>
+              类型
+              <select name="entity_type">
+                <option value="event">活动</option>
+                <option value="signup_rule">报名规则</option>
+                <option value="department">部门</option>
+                <option value="contact">联系人</option>
+                <option value="faq_entry">FAQ</option>
+                <option value="policy_article">制度说明</option>
+                <option value="club_profile">社团信息</option>
+              </select>
+            </label>
+            <label>
+              唯一标识 slug
+              <input name="slug" placeholder="例如 2026-spring-recruitment" required />
+            </label>
+            <label>
+              标题
+              <input name="title" placeholder="例如 2026 春季招新宣讲会" required />
+            </label>
+            <label>
+              状态
+              <select name="status">
+                <option value="draft">草稿</option>
+                <option value="pending">待发布</option>
+                <option value="published">已发布</option>
+              </select>
+            </label>
+            <label>
+              生效时间
+              <input name="effective_at" type="datetime-local" />
+            </label>
+            <label>
+              更新人
+              <input name="updated_by" value="admin" required />
+            </label>
+            <div id="dynamicFields" class="dynamic-fields"></div>
+            <div class="form-actions">
+              <button type="submit" id="submitButton">保存记录</button>
+            </div>
+          </form>
+
+          <section class="panel inset">
+            <h2>对话测试</h2>
+            <label>
+              提问内容
+              <textarea id="chatQuestion" rows="6" placeholder="最近那个招新的活动在哪？"></textarea>
+            </label>
+            <button id="chatButton">发送测试提问</button>
+            <pre id="chatResult" class="result-box"></pre>
+          </section>
+        </div>
+      </section>
+
+      <section class="grid two">
+        <section class="panel">
+          <h2>知识记录</h2>
+          <p class="muted-note">可以直接编辑、发布或删除单条记录。</p>
+          <div id="entityList" class="table-list"></div>
+        </section>
+        <section class="panel">
+          <h2>未命中问题</h2>
+          <div id="unmatchedList" class="table-list"></div>
+        </section>
+      </section>
+
+      <section class="panel">
+        <h2>问答日志</h2>
+        <p class="muted-note">展开单条日志可以查看回合分析、会话状态、候选记录和最终命中路径。</p>
+        <div id="chatLogList" class="table-list"></div>
+      </section>
+    </main>
+    <script type="module" src="/admin.js"></script>
+  </body>
+  </html>

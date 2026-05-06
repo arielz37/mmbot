@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>社团 AI 聊天机器人</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="chat-scene"></div>
+    <main class="chat-shell">
+      <section class="chat-sidebar">
+        <div class="brand-panel">
+          <p class="eyebrow light">MIXMAX</p>
+          <h1>MMbot</h1>
+          <div class="sidebar-badge-row">
+            <span class="hero-badge">Knowledge First</span>
+            <span class="hero-badge">Natural Chat</span>
+          </div>
+        </div>
+
+        <div class="sidebar-card sidebar-card-spotlight">
+          <p class="sidebar-tag">Try Asking</p>
+          <h2>直接开始提问</h2>
+          <div id="faqList" class="faq-list">
+            <p class="empty">正在加载常见问题...</p>
+          </div>
+        </div>
+
+        <div class="sidebar-card status-card">
+          <p class="sidebar-tag">How It Works</p>
+          <h2>回答逻辑</h2>
+          <ul class="feature-list">
+            <li>时间、地点、负责人等关键字段优先直出</li>
+            <li>聊天问题会尽量自然，不强行查库</li>
+            <li>证据不足时会明确提醒继续核实</li>
+          </ul>
+          <a class="admin-link" href="/admin">进入后台管理</a>
+        </div>
+      </section>
+
+      <section class="chat-main">
+        <header class="chat-header">
+          <div class="chat-header-copy">
+            <p class="eyebrow">Apple-style Conversation</p>
+            <h2>社团信息，一问即得。</h2>
+            <p class="header-subtitle">像学长一样逻辑清楚，像学姐一样温柔体贴。</p>
+          </div>
+          <div class="chat-header-actions">
+            <div class="session-pill">
+              <span class="session-dot"></span>
+              <span id="chatStatusInline">就绪</span>
+            </div>
+            <button id="clearChatButton" class="secondary">清空会话</button>
+          </div>
+        </header>
+
+        <section class="chat-overview">
+          <article class="overview-hero">
+            <p class="overview-kicker">Designed For Clarity</p>
+            <h3>更少噪音，更清楚的回答体验。</h3>
+          </article>
+          <div class="overview-grid">
+            <div class="hint-card">
+              <strong>回答更可信</strong>
+              <p>系统会先判断这是知识查询还是日常聊天，再选择更合适的路径回复。</p>
+            </div>
+            <div class="hint-card">
+              <strong>来源更透明</strong>
+              <p>命中社团资料时，会在回答下方展示引用来源和字段范围。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chat-stage">
+          <section id="chatFeed" class="chat-feed" aria-live="polite">
+            <article class="message assistant intro">
+              <div class="avatar">AI</div>
+              <div class="bubble">
+                <p class="message-text">你好呀，我可以帮你查社团活动、报名方式、负责人、部门信息和常见制度说明。</p>
+                <p class="message-text">你可以试试问我：“最近招新活动在哪？”、“报名入口在哪？”或者“活动签到规则是什么？”</p>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <footer class="composer">
+          <form id="chatForm" class="composer-form">
+            <label class="sr-only" for="questionInput">输入问题</label>
+            <textarea
+              id="questionInput"
+              name="question"
+              rows="3"
+              placeholder="输入你的问题，例如：最近那个招新的活动在哪？"
+              required
+            ></textarea>
+            <div class="composer-actions">
+              <div class="composer-status-wrap">
+                <p id="chatStatus" class="chat-status">就绪</p>
+                <p class="chat-status-hint">`Enter` 发送，`Shift + Enter` 换行</p>
+              </div>
+              <button type="submit">发送提问</button>
+            </div>
+          </form>
+        </footer>
+      </section>
+    </main>
+    <script type="module" src="/chat.js"></script>
+  </body>
+  </html>

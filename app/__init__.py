@@ -1,0 +1,1 @@
+"""Club bot Python backend."""
